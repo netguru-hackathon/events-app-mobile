@@ -11,6 +11,9 @@ import {
   Text,
   View
 } from 'react-native';
+import crashlytics from 'react-native-fabric-crashlytics';
+
+crashlytics.init();
 
 export default class EventsApp extends Component {
   render() {
