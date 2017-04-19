@@ -1,3 +1,5 @@
+## EventsApp mobile
+
 ### Technology stack
 * React 16.0.0-alpha.6
 * React Native 0.43.3
@@ -18,7 +20,7 @@ $ yarn
 1. Android:
 ```bash
 $ react-native run-ios
-
+```
 2. iOS:
 ```
 $ react-native run-android
