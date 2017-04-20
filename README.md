@@ -4,6 +4,11 @@
 * React 16.0.0-alpha.6
 * React Native 0.43.3
 
+### Prerequisites
+* [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
+* [Yarn](https://yarnpkg.com/en/docs/install)
+* [Pods](https://cocoapods.org/)
+
 ### Installation
 1. Clone the repo:
 ```bash
@@ -14,6 +19,11 @@ $ cd EventsApp
 2. Install dependencies:
 ```bash
 $ yarn
+```
+
+3. Install pods
+```bash
+$ cd ios && pod install
 ```
 
 ### Running/Development
