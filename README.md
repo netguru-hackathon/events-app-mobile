@@ -7,8 +7,8 @@
 ### Installation
 1. Clone the repo:
 ```bash
-$ git clone git@github.com:netguru-hackathon/events-app.git
-$ cd EventsApp
+$ git clone git@github.com:netguru-hackathon/events-app-mobile.git
+$ cd events-app-mobile
 ```
 
 2. Install dependencies:
@@ -17,11 +17,11 @@ $ yarn
 ```
 
 ### Running/Development
-1. Android:
+1. iOS:
 ```bash
 $ react-native run-ios
 ```
-2. iOS:
+2. Android:
 ```
 $ react-native run-android
 ```
