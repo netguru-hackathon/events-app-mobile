@@ -214,7 +214,7 @@ workflows:
       - react-native-bundle:
           inputs:
             - platform: ios
-            - entry_file: index.js
+            - entry_file: index.ios.js
       - yarn:
           inputs:
             - command: lint

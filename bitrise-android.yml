@@ -227,7 +227,7 @@ workflows:
       - react-native-bundle:
           inputs:
             - platform: android
-            - entry_file: index.js
+            - entry_file: index.android.js
       - yarn:
           inputs:
             - command: lint
