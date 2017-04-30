@@ -1,8 +1,13 @@
 ## EventsApp mobile
 
+[![codebeat badge](https://codebeat.co/badges/6229e7ee-d790-444c-8905-2a29c557d294)](https://codebeat.co/projects/github-com-netguru-hackathon-events-app-mobile-master)
+[![Code Climate](https://codeclimate.com/github/netguru-hackathon/events-app-mobile/badges/gpa.svg)](https://codeclimate.com/github/netguru-hackathon/events-app-mobile)
+
 ### Technology stack
-* React 16.0.0-alpha.6
-* React Native 0.43.3
+| Technology     | Version          |
+|----------------|------------------|
+| React          | 16.0.0-alpha.6   |
+| React Native   | 0.43.3           |
 
 ### Prerequisites
 * [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
@@ -31,11 +36,12 @@ $ cd ios && pod install
 ```bash
 $ react-native run-ios
 ```
+or open ios/EventsApp.xcodeproj in Xcode, Hit the Run button
+
 2. Android:
 ```
 $ react-native run-android
 ```
-or open ios/EventsApp.xcodeproj in Xcode, Hit the Run button
 
 ### Running Tests
 ```bash
