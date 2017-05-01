@@ -98,7 +98,7 @@ workflows:
     before_run:
       - cache-pull
       - bootstrap-dotenv
-      # - bootstrap-cocoapods
+      - bootstrap-cocoapods
       - bootstrap-react-native
       - test-react-native
       - test-xcode
