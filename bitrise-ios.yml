@@ -76,8 +76,8 @@ trigger_map:
 
 app:
   envs:
-    - XCODEBUILD_PROJECT: ./ios/SlackSocial.xcodeproj
-    - XCODEBUILD_SCHEME: SlackSocial
+    - XCODEBUILD_PROJECT: ./ios/EventsApp.xcodeproj
+    - XCODEBUILD_SCHEME: EventsApp
     - XCODEBUILD_OPTIONS: ''
 
 # Workflow declarations.
