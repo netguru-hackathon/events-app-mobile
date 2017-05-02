@@ -76,7 +76,7 @@ trigger_map:
 
 app:
   envs:
-    - XCODEBUILD_PROJECT: ./ios/EventsApp.xcodeproj
+    - XCODEBUILD_PROJECT: ./ios/EventsApp.xcworkspace
     - XCODEBUILD_SCHEME: EventsApp
     - XCODEBUILD_OPTIONS: ''
 
