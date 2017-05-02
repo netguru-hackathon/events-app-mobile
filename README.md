@@ -31,6 +31,11 @@ $ yarn
 $ cd ios && pod install
 ```
 
+4. Copy sample environment file:
+```bash
+$ cp .env.sample .env
+```
+
 ### Running/Development
 1. iOS:
 ```bash
