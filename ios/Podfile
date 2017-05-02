@@ -2,4 +2,3 @@ target 'EventsApp' do
   pod 'Fabric'
   pod 'Crashlytics'
 end
-

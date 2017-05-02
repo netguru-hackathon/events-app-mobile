@@ -4,10 +4,10 @@
 	"private": true,
 	"scripts": {
 		"start": "node node_modules/react-native/local-cli/cli.js start",
-    "lint": "eslint app",
-    "test": "jest",
-    "test-watch": "jest --watch --verbose",
-    "precommit": "yarn lint"
+		"lint": "eslint app",
+		"test": "jest",
+		"test-watch": "jest --watch --verbose",
+		"precommit": "yarn lint"
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.6",
@@ -30,6 +30,9 @@
 		"react-test-renderer": "16.0.0-alpha.6"
 	},
 	"jest": {
-		"preset": "react-native"
+		"preset": "react-native",
+		"setupFiles": [
+			"<rootDir>/jest/setup.js"
+		]
 	}
 }

@@ -1,7 +1,10 @@
 ## EventsApp mobile
 
-[![codebeat badge](https://codebeat.co/badges/6229e7ee-d790-444c-8905-2a29c557d294)](https://codebeat.co/projects/github-com-netguru-hackathon-events-app-mobile-master)
+Code quality [![codebeat badge](https://codebeat.co/badges/6229e7ee-d790-444c-8905-2a29c557d294)](https://codebeat.co/projects/github-com-netguru-hackathon-events-app-mobile-master)
 [![Code Climate](https://codeclimate.com/github/netguru-hackathon/events-app-mobile/badges/gpa.svg)](https://codeclimate.com/github/netguru-hackathon/events-app-mobile)
+
+Android [![Build Status](https://www.bitrise.io/app/ea788d371b493b45.svg?token=gQzdV-OK6RBcEElLAtRvSA)](https://www.bitrise.io/app/ea788d371b493b45)
+iOS [![Build Status](https://www.bitrise.io/app/e41270c9ddb1fbf3.svg?token=kyL8B1JF1S-Dy_GDq6XHIQ)](https://www.bitrise.io/app/e41270c9ddb1fbf3)
 
 ### Technology stack
 | Technology     | Version          |
