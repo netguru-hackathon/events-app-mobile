@@ -12,9 +12,12 @@
 	"dependencies": {
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.43.3",
-    "react-native-config": "^0.4.1",
+		"react-native-config": "^0.4.1",
 		"react-native-fabric": "^0.4.1",
-		"react-native-fabric-crashlytics": "^0.1.8"
+		"react-native-fabric-crashlytics": "^0.1.8",
+		"redux": "^3.6.0",
+		"redux-axios-middleware": "^4.0.0",
+		"redux-thunk": "^2.2.0"
 	},
 	"devDependencies": {
 		"babel-jest": "19.0.0",
