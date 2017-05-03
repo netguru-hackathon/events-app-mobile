@@ -10,6 +10,7 @@
 		"precommit": "yarn lint"
 	},
 	"dependencies": {
+		"axios": "^0.16.1",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.43.3",
 		"react-native-config": "^0.4.1",
