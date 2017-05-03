@@ -6,6 +6,8 @@ Code quality [![codebeat badge](https://codebeat.co/badges/6229e7ee-d790-444c-89
 Android [![Build Status](https://www.bitrise.io/app/ea788d371b493b45.svg?token=gQzdV-OK6RBcEElLAtRvSA)](https://www.bitrise.io/app/ea788d371b493b45)
 iOS [![Build Status](https://www.bitrise.io/app/e41270c9ddb1fbf3.svg?token=kyL8B1JF1S-Dy_GDq6XHIQ)](https://www.bitrise.io/app/e41270c9ddb1fbf3)
 
+[![David-DM](https://david-dm.org/netguru-hackathon/events-app-mobile.svg)](https://david-dm.org/netguru-hackathon/events-app-mobile)
+
 ### Technology stack
 | Technology     | Version          |
 |----------------|------------------|
