@@ -13,6 +13,8 @@ iOS [![Build Status](https://www.bitrise.io/app/e41270c9ddb1fbf3.svg?token=kyL8B
 |----------------|------------------|
 | React          | 16.0.0-alpha.6   |
 | React Native   | 0.43.3           |
+| axios          | 0.16.1           |
+| redux          | 3.6.0            |
 
 ### Prerequisites
 * [React Native](https://facebook.github.io/react-native/docs/getting-started.html)
