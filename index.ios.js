@@ -4,4 +4,4 @@ import EventsApp from './app/app';
 
 crashlytics.init();
 
-AppRegistry.registerComponent('EventsApp', () => EventsApp);
+export default AppRegistry.registerComponent('EventsApp', () => EventsApp);
