@@ -1,6 +1,7 @@
 import { TabNavigator, TabBarBottom } from 'react-navigation';
 import Events from './screens/Events';
 import Settings from './screens/Settings';
+import colors from '../constants/colors';
 
 const DashboardNavigator = TabNavigator({
   Events: {
@@ -11,7 +12,7 @@ const DashboardNavigator = TabNavigator({
   },
 }, {
   tabBarOptions: {
-    activeTintColor: '#6D5EB3',
+    activeTintColor: colors.NAVIGATION_ACTIVE_TINT_COLOR,
   },
   tabBarPosition: 'bottom',
   tabBarComponent: TabBarBottom,
