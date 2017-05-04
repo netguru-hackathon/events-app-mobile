@@ -11,11 +11,13 @@
 	},
 	"dependencies": {
 		"axios": "^0.16.1",
+		"prop-types": "^15.5.8",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.43.3",
 		"react-native-config": "^0.4.1",
 		"react-native-fabric": "^0.4.1",
 		"react-native-fabric-crashlytics": "^0.1.8",
+		"react-navigation": "^1.0.0-beta.9",
 		"react-redux": "^5.0.4",
 		"redux": "^3.6.0",
 		"redux-axios-middleware": "^4.0.0",
@@ -37,6 +39,9 @@
 	},
 	"jest": {
 		"preset": "react-native",
+		"transformIgnorePatterns": [
+			"node_modules/(?!react-native|react-navigation)/"
+		],
 		"setupFiles": [
 			"<rootDir>/jest/setup.js"
 		]
