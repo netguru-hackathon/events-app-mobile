@@ -1,6 +1,8 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import DashboardNavigator from './DashboardNavigator';
+import AccessTokenFetcher from './screens/AccessTokenFetcher';
+import Login from './screens/Login';
 
 const RootNavigator = StackNavigator({
   Login: {
@@ -12,6 +14,10 @@ const RootNavigator = StackNavigator({
       <DashboardNavigator
         screenProps={{ rootNavigation: navigation }}
       />,
+  },
+  AccessTokenFetcher: {
+    screen: AccessTokenFetcher,
+    path: 'oauth',
   },
 }, {
   headerMode: 'none',
