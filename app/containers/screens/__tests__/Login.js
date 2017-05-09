@@ -8,11 +8,6 @@ test('renders correctly', () => {
     <Login
       navigation={{
         navigate: () => {},
-        state: {
-          params: {
-            authURL: 'http://google.com',
-          },
-        },
       }}
     />,
   ).toJSON();
