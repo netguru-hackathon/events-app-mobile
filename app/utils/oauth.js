@@ -1,0 +1,48 @@
+const oAuthScopes = [
+  // 'channels:history',
+  // 'channels:read',
+  // 'channels:write',
+  // 'chat:write:bot',
+  // 'chat:write:user',
+  // 'dnd:read',
+  // 'dnd:write',
+  // 'emoji:read',
+  // 'files:read',
+  // 'files:write:user',
+  // 'groups:history',
+  // 'groups:read',
+  // 'groups:write',
+  // 'im:history',
+  // 'im:read',
+  // 'im:write',
+  // 'links:write',
+  // 'mpim:history',
+  // 'mpim:read',
+  // 'mpim:write',
+  // 'pins:read',
+  // 'pins:write',
+  // 'reactions:read',
+  // 'reactions:write',
+  // 'reminders:read',
+  // 'reminders:write',
+  // 'search:read',
+  // 'stars:read',
+  // 'stars:write',
+  // 'team:read',
+  // 'usergroups:read',
+  // 'usergroups:write',
+  // 'users.profile:read',
+  // 'users.profile:write',
+  // 'users:read',
+  // 'users:write',
+  'identity.avatar',
+  'identity.basic',
+  'identity.email',
+  'identity.team',
+];
+
+function formatPermissionScopes() {
+  return oAuthScopes.join(',');
+}
+
+export default formatPermissionScopes;
