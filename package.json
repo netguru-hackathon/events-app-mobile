@@ -7,7 +7,7 @@
 		"lint": "eslint app",
 		"test": "jest",
 		"test-watch": "jest --watch --verbose",
-		"precommit": "yarn lint"
+		"precommit": "yarn lint && yarn test"
 	},
 	"dependencies": {
 		"axios": "^0.16.1",
