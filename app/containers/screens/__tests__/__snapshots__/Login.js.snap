@@ -10,6 +10,13 @@ exports[`renders correctly 1`] = `
     }
   }
 >
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+  >
+    Welcome
+  </Text>
   <View
     accessibilityComponentType={undefined}
     accessibilityLabel={undefined}
@@ -36,13 +43,15 @@ exports[`renders correctly 1`] = `
     testID={undefined}
     tvParallaxProperties={undefined}
   >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      ellipsizeMode="tail"
-    >
-      Welcome
-    </Text>
+    <Image
+      resizeMode="contain"
+      source={1}
+      style={
+        Object {
+          "width": 525,
+        }
+      }
+    />
   </View>
 </View>
 `;
