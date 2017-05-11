@@ -12,6 +12,7 @@ import Config from 'react-native-config';
 import colors from '../../constants/colors';
 import { SlackOAuthUrl } from '../../constants/constants';
 import permissionScopes from '../../utils/oauth';
+import I18n from '../../utils/translations';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,7 +38,7 @@ const Login = props =>
         }
       }}
     >
-      <Text>Add to Slack</Text>
+      <Text>{I18n.t('welcome')}</Text>
     </TouchableHighlight>
   </View>;
 
