@@ -41,7 +41,7 @@ exports[`renders correctly 1`] = `
       allowFontScaling={true}
       ellipsizeMode="tail"
     >
-      Add to Slack
+      Welcome
     </Text>
   </View>
 </View>
