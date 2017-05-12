@@ -24,6 +24,11 @@ module.exports = {
     'no-unused-vars': [2, { 'argsIgnorePattern': '^_' }],
     'max-len': [2, 100],
     'global-require': 0,
+    'no-multiple-empty-lines': ['error', {
+      max: 1,
+      maxEOF: 0,
+      maxBOF: 0,
+    }],
   },
   globals: {
     fetch: false,
