@@ -15,8 +15,7 @@ exports[`renders correctly 1`] = `
     allowFontScaling={true}
     ellipsizeMode="tail"
   >
-    FetchAccessToken with code 
-    code
+    Fetching token...
   </Text>
 </View>
 `;
