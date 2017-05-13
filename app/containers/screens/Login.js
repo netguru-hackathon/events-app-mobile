@@ -1,24 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  View,
-  StyleSheet,
-  TouchableHighlight,
-  Text,
+  Dimensions,
+  Image,
   Linking,
   Platform,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
 } from 'react-native';
 import Config from 'react-native-config';
 import colors from '../../constants/colors';
 import { SlackOAuthUrl } from '../../constants/constants';
 import permissionScopes from '../../utils/oauth';
+import signInWithSlack from '../../img/SignInWithSlack.png';
 import I18n from '../../utils/translations';
 
+const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  button: {
+    width: 0.7 * width,
   },
 });
 
@@ -28,6 +35,7 @@ const Login = props =>
   <View
     style={styles.container}
   >
+    <Text>{I18n.t('welcome')}</Text>
     <TouchableHighlight
       underlayColor={colors.TRANSPARENT}
       onPress={() => {
@@ -38,7 +46,11 @@ const Login = props =>
         }
       }}
     >
-      <Text>{I18n.t('welcome')}</Text>
+      <Image
+        source={signInWithSlack}
+        style={styles.button}
+        resizeMode={'contain'}
+      />
     </TouchableHighlight>
   </View>;
 

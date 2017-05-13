@@ -40,8 +40,9 @@ $ cd ios && pod install
 
 4. Copy sample environment file:
 ```bash
-$ cp .env.sample .env
+$ cp .env.bitrise .env
 ```
+Ask developers for credentials
 
 ### Running/Development
 1. iOS:
@@ -51,6 +52,7 @@ $ react-native run-ios
 or open ios/EventsApp.xcodeproj in Xcode, Hit the Run button
 
 2. Android:
+Run the Android emulator and then
 ```
 $ react-native run-android
 ```
