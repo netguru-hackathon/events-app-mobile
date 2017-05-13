@@ -17,3 +17,7 @@ jest.mock('Linking', () => ({
   canOpenURL: jest.fn(),
   getInitialURL: jest.fn(),
 }));
+
+jest.mock('rn-ios-user-agent', () => ({
+  set: jest.fn(),
+}));
