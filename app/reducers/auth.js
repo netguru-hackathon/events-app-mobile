@@ -25,13 +25,6 @@ export default function auth(state = initialState, action) {
       };
     case AUTH_USER_SUCCESS:
       item = action.payload.data;
-      console.log('=========================================');
-      console.log('action');
-      console.log(action);
-      console.log('=========================================');
-      console.log('item');
-      console.log(item);
-      console.log('=========================================');
       return {
         ...state,
         errors: [],

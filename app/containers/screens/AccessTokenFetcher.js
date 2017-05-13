@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
+import I18n from '../../utils/translations';
 
 // actions
 import authUser from '../../actions/auth';
@@ -45,7 +46,7 @@ class AccessTokenFetcher extends Component {
         style={styles.container}
       >
         <Text>
-          Fetching token...
+          {I18n.t('loading')}
         </Text>
       </View>
     );
