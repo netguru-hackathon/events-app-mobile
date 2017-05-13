@@ -4,6 +4,7 @@ import {
   WebView,
 } from 'react-native';
 import url from 'url';
+import UserAgentIOS from 'rn-ios-user-agent';
 
 class SlackAuth extends Component {
   static propTypes = {
@@ -15,6 +16,10 @@ class SlackAuth extends Component {
         }),
       }),
     }).isRequired,
+  }
+
+  componentWillMount() {
+    UserAgentIOS.set('Mozilla/5.0 Google');
   }
 
   webViewRequest = (event) => {
