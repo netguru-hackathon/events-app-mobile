@@ -7,7 +7,7 @@ exports[`renders correctly 1`] = `
     allowFontScaling={true}
     ellipsizeMode="tail"
   >
-    Some Events text
+    Events
   </Text>
 </View>
 `;
