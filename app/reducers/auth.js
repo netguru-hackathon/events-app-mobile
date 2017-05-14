@@ -21,7 +21,6 @@ export default function auth(state = initialState, action) {
         ...state,
         isStarted: true,
         isFetching: true,
-        isOauth: action.isOauth,
       };
     case AUTH_USER_SUCCESS:
       item = action.payload.data;
