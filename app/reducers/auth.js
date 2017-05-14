@@ -30,10 +30,13 @@ export default function auth(state = initialState, action) {
         errors: [],
         isFetching: false,
         isAuthenticated: true,
-        item,
+        item: {
+          id: item.data.attributes.id,
+          token: item.data.attributes.token,
+        },
       };
     case AUTH_USER_FAILURE:
-      errors = action.error.response.data.errors;
+      errors = action.error.response;
       return {
         ...initialState,
         errors: [errors],

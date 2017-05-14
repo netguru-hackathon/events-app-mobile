@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
   Image,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import I18n from '../../utils/translations';
 
 const styles = StyleSheet.create({
   icon: {
@@ -14,8 +17,12 @@ const styles = StyleSheet.create({
 });
 
 class Settings extends Component {
+  static propTypes = {
+    token: PropTypes.string.isRequired,
+  };
+
   static navigationOptions = {
-    tabBarLabel: 'Settings',
+    tabBarLabel: I18n.t('settings'),
     showIcon: true,
     tabBarIcon: ({ tintColor }) => (
       <Image
@@ -26,12 +33,21 @@ class Settings extends Component {
   };
 
   render() {
+    const { token } = this.props;
+
     return (
       <View>
-        <Text>Some Settings text</Text>
+        <Text>{I18n.t('settingsTitle')}</Text>
+        <Text>{token}</Text>
       </View>
     );
   }
 }
 
-export default Settings;
+const mapStateToProps = state => ({
+  token: state.auth.item.token,
+});
+
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Settings);

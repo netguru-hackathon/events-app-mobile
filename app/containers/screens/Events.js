@@ -5,6 +5,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import I18n from '../../utils/translations';
 
 const styles = StyleSheet.create({
   icon: {
@@ -15,8 +16,7 @@ const styles = StyleSheet.create({
 
 class Events extends Component {
   static navigationOptions = {
-    tabBarLabel: 'Events',
-    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+    tabBarLabel: I18n.t('events'),
     showIcon: true,
     tabBarIcon: ({ tintColor }) => (
       <Image
@@ -29,7 +29,7 @@ class Events extends Component {
   render() {
     return (
       <View>
-        <Text>Some Events text</Text>
+        <Text>{I18n.t('eventsTitle')}</Text>
       </View>
     );
   }
