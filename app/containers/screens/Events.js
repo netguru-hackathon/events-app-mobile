@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
+  FlatList,
   Image,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
+import { fetchEvents } from '../../actions/events';
+import { EventsItem } from './EventsItem';
 
 const styles = StyleSheet.create({
   icon: {
@@ -15,6 +20,13 @@ const styles = StyleSheet.create({
 });
 
 class Events extends Component {
+  static propTypes = {
+    fetchEvents: PropTypes.func.isRequired,
+    isStarted: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    events: PropTypes.arrayOf(PropTypes.object).isRequired,
+  };
+
   static navigationOptions = {
     tabBarLabel: I18n.t('events'),
     showIcon: true,
@@ -26,13 +38,51 @@ class Events extends Component {
     ),
   };
 
+  // eslint-disable-next-line
+  renderEvent({ item }) {
+    return (
+      <EventsItem
+        key={`event${item.id}`}
+        event={item.attributes}
+      />
+    );
+  }
+
+  componentWillMount() {
+    this.props.fetchEvents();
+  }
+
+  renderEventsList() {
+    const { isStarted, isFetching, events } = this.props;
+    if (isStarted && isFetching) return <Text>Loading..</Text>;
+    return (
+      <FlatList
+        /* https://github.com/facebook/react-native/issues/13316 */
+        removeClippedSubviews={false}
+        data={events}
+        renderItem={this.renderEvent}
+      />
+    );
+  }
+
   render() {
     return (
       <View>
         <Text>{I18n.t('eventsTitle')}</Text>
+        {this.renderEventsList()}
       </View>
     );
   }
 }
 
-export default Events;
+const mapStateToProps = state => ({
+  isStarted: state.events.isStarted,
+  isFetching: state.events.isFetching,
+  events: state.events.items,
+});
+
+const mapDispatchToProps = {
+  fetchEvents,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Events);
