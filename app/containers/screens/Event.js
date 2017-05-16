@@ -7,9 +7,14 @@ import {
   Text,
   View,
 } from 'react-native';
+import I18n from '../../utils/translations';
 import { fetchEvent } from '../../actions/events';
 
 const styles = StyleSheet.create({
+  icon: {
+    width: 20,
+    height: 20,
+  },
   image: {
     width: 100,
     height: 100,
@@ -36,9 +41,17 @@ class Event extends Component {
     const { navigation } = props;
 
     return {
-      headerTitle: `${navigation.state.params.item.attributes.name}`,
+      tabBarLabel: I18n.t('events'),
+      showIcon: true,
+      tabBarIcon: ({ tintColor }) => (
+        <Image
+          source={require('../../img/EventsIcon.png')}
+          style={[styles.icon, { tintColor }]}
+        />
+      ),
+      headerTitle: `${navigation.state.params.item.name}`,
     };
-  }
+  };
 
   componentWillMount() {
     const { navigation } = this.props;

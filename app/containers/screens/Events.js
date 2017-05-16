@@ -54,7 +54,7 @@ class Events extends Component {
     return (
       <EventsItem
         key={`event${item.id}`}
-        event={item.attributes}
+        event={item}
         onPress={() => navigation.navigate('Event', { item })}
       />
     );
