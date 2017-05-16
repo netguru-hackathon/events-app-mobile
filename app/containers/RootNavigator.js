@@ -13,11 +13,7 @@ const RootNavigator = ({ isAuthenticated, uriPrefix }) => {
 
 const AuthenticatedNavigator = StackNavigator({
   DashboardNavigator: {
-    // eslint-disable-next-line
-    screen: ({ navigation }) =>
-      <DashboardNavigator
-        screenProps={{ rootNavigation: navigation }}
-      />,
+    screen: DashboardNavigator,
   },
 }, {
   headerMode: 'none',
