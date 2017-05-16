@@ -30,6 +30,7 @@ class Settings extends Component {
         style={[styles.icon, { tintColor }]}
       />
     ),
+    headerTitle: I18n.t('settings'),
   };
 
   render() {
@@ -37,7 +38,6 @@ class Settings extends Component {
 
     return (
       <View>
-        <Text>{I18n.t('settingsTitle')}</Text>
         <Text>{token}</Text>
       </View>
     );

@@ -8,6 +8,17 @@ test('renders correctly', () => {
   const tree = renderer.create(
     <Events
       store={store}
+      isStarted={'true'}
+      isFetching={'true'}
+      events={[]}
+      navigation={{
+        navigate: () => {},
+        state: {
+          params: {
+            code: 'code',
+          },
+        },
+      }}
     />,
   ).toJSON();
   expect(tree).toMatchSnapshot();

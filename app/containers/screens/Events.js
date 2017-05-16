@@ -25,6 +25,10 @@ class Events extends Component {
     isStarted: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     events: PropTypes.arrayOf(PropTypes.object).isRequired,
+    navigation: PropTypes.shape({
+      state: PropTypes.object.isRequired,
+      navigate: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   static navigationOptions = {
@@ -36,31 +40,38 @@ class Events extends Component {
         style={[styles.icon, { tintColor }]}
       />
     ),
+    headerTitle: I18n.t('events'),
   };
-
-  // eslint-disable-next-line
-  renderEvent({ item }) {
-    return (
-      <EventsItem
-        key={`event${item.id}`}
-        event={item.attributes}
-      />
-    );
-  }
 
   componentWillMount() {
     this.props.fetchEvents();
   }
 
+  // eslint-disable-next-line
+  renderEvent({ item }) {
+    const { navigation } = this.props;
+
+    return (
+      <EventsItem
+        key={`event${item.id}`}
+        event={item.attributes}
+        onPress={() => navigation.navigate('Event', { item })}
+      />
+    );
+  }
+
   renderEventsList() {
     const { isStarted, isFetching, events } = this.props;
+
     if (isStarted && isFetching) return <Text>Loading..</Text>;
     return (
       <FlatList
         /* https://github.com/facebook/react-native/issues/13316 */
         removeClippedSubviews={false}
         data={events}
-        renderItem={this.renderEvent}
+        keyExtractor={item => item.id}
+        // eslint-disable-next-line
+        renderItem={this.renderEvent.bind(this)}
       />
     );
   }
@@ -68,7 +79,6 @@ class Events extends Component {
   render() {
     return (
       <View>
-        <Text>{I18n.t('eventsTitle')}</Text>
         {this.renderEventsList()}
       </View>
     );
