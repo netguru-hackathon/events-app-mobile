@@ -6,13 +6,6 @@ exports[`renders correctly 1`] = `
     accessible={true}
     allowFontScaling={true}
     ellipsizeMode="tail"
-  >
-    Settings
-  </Text>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
   />
 </View>
 `;

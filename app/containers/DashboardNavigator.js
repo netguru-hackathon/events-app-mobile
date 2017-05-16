@@ -1,14 +1,14 @@
 import { TabNavigator, TabBarBottom } from 'react-navigation';
-import Events from './screens/Events';
-import Settings from './screens/Settings';
+import EventsStackNavigator from './EventsNavigator';
+import SettingsStackNavigator from './SettingsNavigator';
 import colors from '../constants/colors';
 
 const DashboardNavigator = TabNavigator({
-  Events: {
-    screen: Events,
+  EventsStackNavigator: {
+    screen: EventsStackNavigator,
   },
-  Settings: {
-    screen: Settings,
+  SettingsStackNavigator: {
+    screen: SettingsStackNavigator,
   },
 }, {
   tabBarOptions: {

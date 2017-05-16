@@ -4,6 +4,7 @@ I18n.fallbacks = true;
 
 I18n.translations = {
   en: {
+    event: 'Event',
     events: 'Events',
     eventsTitle: 'Events',
     loading: 'Loading...',
@@ -12,6 +13,7 @@ I18n.translations = {
     welcome: 'Welcome',
   },
   pl: {
+    event: 'Wydarzenie',
     events: 'Wydarzenia',
     eventsTitle: 'Wydarzenia',
     loading: 'Wczytywanie...',

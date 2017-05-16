@@ -1,21 +1,28 @@
 import 'react-native';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Events from '../Events';
+import Event from '../Event';
 import store from '../../../store';
 
 test('renders correctly', () => {
   const tree = renderer.create(
-    <Events
+    <Event
       store={store}
       isStarted={'true'}
       isFetching={'true'}
-      events={[]}
+      event={{
+        name: 'name',
+        description: 'description',
+        image: 'image',
+      }}
       navigation={{
         navigate: () => {},
         state: {
           params: {
-            code: 'code',
+            item: {
+              id: 1,
+              name: 'name',
+            },
           },
         },
       }}

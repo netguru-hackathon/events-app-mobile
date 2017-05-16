@@ -1,32 +1,33 @@
 import {
-  EVENTS_FETCH_REQUEST,
-  EVENTS_FETCH_SUCCESS,
-  EVENTS_FETCH_FAILURE,
+  EVENT_FETCH_REQUEST,
+  EVENT_FETCH_SUCCESS,
+  EVENT_FETCH_FAILURE,
 } from '../constants/actionTypes';
 
 export const initialState = {
   isStarted: false,
   isFetching: false,
-  items: [],
+  item: {},
+  included: {},
 };
 
 export default function auth(state = initialState, action) {
-  let items;
+  let item;
   switch (action.type) {
-    case EVENTS_FETCH_REQUEST:
+    case EVENT_FETCH_REQUEST:
       return {
         ...state,
         isStarted: true,
         isFetching: true,
       };
-    case EVENTS_FETCH_SUCCESS:
-      items = action.payload;
+    case EVENT_FETCH_SUCCESS:
+      item = action.payload;
       return {
         ...state,
         isFetching: false,
-        items,
+        item,
       };
-    case EVENTS_FETCH_FAILURE:
+    case EVENT_FETCH_FAILURE:
       return {
         ...initialState,
       };
