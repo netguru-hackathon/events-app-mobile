@@ -4,13 +4,13 @@ import axiosMiddleware from 'redux-axios-middleware';
 import { composeWithDevTools } from 'remote-redux-devtools';
 import { autoRehydrate } from 'redux-persist';
 
-import axiosClient from './api/client';
+import { client, clientOptions } from './api/client';
 import reducers from './reducers/index';
 
 const store = composeWithDevTools(
   applyMiddleware(
     thunk,
-    axiosMiddleware(axiosClient, { returnRejectedPromiseOnError: true }),
+    axiosMiddleware(client, clientOptions),
   ),
   autoRehydrate(),
 )(createStore)(reducers);
