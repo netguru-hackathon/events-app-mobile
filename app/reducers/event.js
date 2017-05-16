@@ -21,7 +21,7 @@ export default function auth(state = initialState, action) {
         isFetching: true,
       };
     case EVENT_FETCH_SUCCESS:
-      item = action.payload.data.data.attributes;
+      item = action.payload;
       return {
         ...state,
         isFetching: false,
