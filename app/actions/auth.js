@@ -2,9 +2,10 @@ import {
   AUTH_USER_REQUEST,
   AUTH_USER_SUCCESS,
   AUTH_USER_FAILURE,
+  LOGOUT_USER_SUCCESS,
 } from '../constants/actionTypes';
 
-export default function authUser(code) {
+export function authUser(code) {
   return {
     types: [
       AUTH_USER_REQUEST,
@@ -21,5 +22,11 @@ export default function authUser(code) {
         simple: false,
       },
     },
+  };
+}
+
+export function logoutUser() {
+  return {
+    type: LOGOUT_USER_SUCCESS,
   };
 }

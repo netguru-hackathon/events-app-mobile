@@ -9,7 +9,7 @@ import {
 import I18n from '../../utils/translations';
 
 // actions
-import authUser from '../../actions/auth';
+import { authUser } from '../../actions/auth';
 
 const styles = StyleSheet.create({
   container: {
