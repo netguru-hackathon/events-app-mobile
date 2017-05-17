@@ -8,7 +8,7 @@ import {
 import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 
 // actions
-import authUser from '../../actions/auth';
+import { authUser } from '../../actions/auth';
 
 const styles = StyleSheet.create({
   container: {

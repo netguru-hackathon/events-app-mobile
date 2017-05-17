@@ -15,6 +15,7 @@ module.exports = {
   },
   rules: {
     'react/jsx-filename-extension': [2, { extensions: ['.js'] }],
+    'react/jsx-no-bind': 0,
     'react/jsx-wrap-multilines': 0,
     'react/require-default-props': 0,
     'react-native/no-unused-styles': 2,

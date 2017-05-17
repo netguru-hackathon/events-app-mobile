@@ -2,6 +2,7 @@ import {
   AUTH_USER_REQUEST,
   AUTH_USER_SUCCESS,
   AUTH_USER_FAILURE,
+  LOGOUT_USER_SUCCESS,
 } from '../constants/actionTypes';
 
 export const initialState = {
@@ -23,22 +24,23 @@ export default function auth(state = initialState, action) {
         isFetching: true,
       };
     case AUTH_USER_SUCCESS:
-      item = action.payload.data;
+      item = action.payload;
       return {
         ...state,
         errors: [],
         isFetching: false,
         isAuthenticated: true,
-        item: {
-          id: item.data.attributes.id,
-          token: item.data.attributes.token,
-        },
+        item,
       };
     case AUTH_USER_FAILURE:
       errors = action.error.response;
       return {
         ...initialState,
         errors: [errors],
+      };
+    case LOGOUT_USER_SUCCESS:
+      return {
+        ...initialState,
       };
     default:
       return state;
