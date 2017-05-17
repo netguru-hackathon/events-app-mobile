@@ -11,11 +11,21 @@ import {
 import I18n from '../../utils/translations';
 import { fetchEvents } from '../../actions/events';
 import { EventsItem } from './EventsItem';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   icon: {
     width: 20,
     height: 20,
+  },
+  separator: {
+    height: 5,
+    marginLeft: 15,
+    marginRight: 15,
+    backgroundColor: colors.TRANSPARENT,
+  },
+  view: {
+    marginTop: 5,
   },
 });
 
@@ -41,6 +51,10 @@ class Events extends Component {
       />
     ),
     headerTitle: I18n.t('events'),
+    headerTintColor: colors.WHITE,
+    headerStyle: {
+      backgroundColor: colors.BLACK_OPACITY,
+    },
   };
 
   componentWillMount() {
@@ -60,6 +74,13 @@ class Events extends Component {
     );
   }
 
+  // eslint-disable-next-line
+  renderSeparator() {
+    return (
+      <View style={styles.separator} />
+    );
+  }
+
   renderEventsList() {
     const { isStarted, isFetching, events } = this.props;
 
@@ -70,6 +91,7 @@ class Events extends Component {
         removeClippedSubviews={false}
         data={events}
         keyExtractor={item => item.id}
+        ItemSeparatorComponent={this.renderSeparator}
         // eslint-disable-next-line
         renderItem={this.renderEvent.bind(this)}
       />
@@ -78,7 +100,7 @@ class Events extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.view}>
         {this.renderEventsList()}
       </View>
     );

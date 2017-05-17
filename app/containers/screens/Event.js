@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
+  Dimensions,
   Image,
   StyleSheet,
   Text,
@@ -9,15 +10,21 @@ import {
 } from 'react-native';
 import I18n from '../../utils/translations';
 import { fetchEvent } from '../../actions/events';
+import colors from '../../constants/colors';
 
+const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
   icon: {
     width: 20,
     height: 20,
   },
   image: {
-    width: 100,
-    height: 100,
+    marginTop: -65,
+    width,
+    height: 0.25 * height,
   },
 });
 
@@ -50,6 +57,10 @@ class Event extends Component {
         />
       ),
       headerTitle: `${navigation.state.params.item.name}`,
+      headerTintColor: colors.WHITE,
+      headerStyle: {
+        backgroundColor: colors.BLACK_OPACITY,
+      },
     };
   };
 
@@ -66,10 +77,11 @@ class Event extends Component {
     if (isStarted && isFetching) return <Text>Loading..</Text>;
     return (
       <View>
-        <Text>{event.name}</Text>
-        <Text>{event.description}</Text>
-        <Text>{event.image}</Text>
         <Image source={{ uri: event.image }} style={styles.image} />
+        <View style={styles.container}>
+          <Text>{event.description}</Text>
+          <Text>{event.image}</Text>
+        </View>
       </View>
     );
   }
