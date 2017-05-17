@@ -10,12 +10,19 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    ellipsizeMode="tail"
-  >
-    Loading...
-  </Text>
+  <ActivityIndicator
+    animating={true}
+    color="#999999"
+    hidesWhenStopped={true}
+    size="large"
+    style={
+      Object {
+        "alignItems": "center",
+        "height": 80,
+        "justifyContent": "center",
+        "padding": 8,
+      }
+    }
+  />
 </View>
 `;

@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import {
   AsyncStorage,
   Platform,
-  Text,
 } from 'react-native';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import store from './store';
-import I18n from './utils/translations';
 import RootRouter from './containers/RootRouter';
+import { RenderActivityIndicator } from './containers/shared/RenderActivityIndicator';
 
 const prefix = Platform.OS === 'android' ? 'http://localhost/eventsapp/' : 'eventsapp://';
 
@@ -29,7 +28,7 @@ class App extends Component {
   }
 
   render() {
-    if (!this.state.rehydrated) return <Text>{I18n.t('loading')}</Text>;
+    if (!this.state.rehydrated) return <RenderActivityIndicator />;
 
     return (
       <Provider store={store}>
