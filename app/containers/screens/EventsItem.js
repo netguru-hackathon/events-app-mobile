@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Dimensions,
   Image,
   StyleSheet,
   Text,
@@ -9,22 +10,47 @@ import {
 } from 'react-native';
 import colors from '../../constants/colors';
 
+const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+  },
+  description: {
+    fontSize: 14,
+    width: width - 90,
+  },
   image: {
-    width: 100,
-    height: 100,
+    margin: 5,
+    width: 70,
+    height: 70,
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  row: {
+    backgroundColor: colors.WHITE,
   },
 });
 
 export const EventsItem = ({ event, onPress }) =>
   <TouchableHighlight
+    style={styles.row}
     underlayColor={colors.TRANSPARENT}
     onPress={onPress}
   >
-    <View>
-      <Text>{event.name}</Text>
-      <Text>{event.description}</Text>
+    <View style={styles.container}>
       <Image source={{ uri: event.image }} style={styles.image} />
+      <View>
+        <Text style={styles.name}>{event.name}</Text>
+        <Text
+          style={styles.description}
+          ellipsizeMode={'tail'}
+          numberOfLines={3}
+        >
+          {event.description}
+        </Text>
+      </View>
     </View>
   </TouchableHighlight>;
 

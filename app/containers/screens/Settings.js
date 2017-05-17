@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
+import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
   icon: {
@@ -31,6 +32,10 @@ class Settings extends Component {
       />
     ),
     headerTitle: I18n.t('settings'),
+    headerTintColor: colors.WHITE,
+    headerStyle: {
+      backgroundColor: colors.BLACK_OPACITY,
+    },
   };
 
   render() {
