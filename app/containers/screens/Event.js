@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import I18n from '../../utils/translations';
 import { fetchEvent } from '../../actions/events';
+import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 import colors from '../../constants/colors';
 
 const { width, height } = Dimensions.get('window');
@@ -74,13 +75,12 @@ class Event extends Component {
   renderEvent() {
     const { isStarted, isFetching, event } = this.props;
 
-    if (isStarted && isFetching) return <Text>Loading..</Text>;
+    if (isStarted && isFetching) return <RenderActivityIndicator />;
     return (
       <View>
         <Image source={{ uri: event.image }} style={styles.image} />
         <View style={styles.container}>
           <Text>{event.description}</Text>
-          <Text>{event.image}</Text>
         </View>
       </View>
     );

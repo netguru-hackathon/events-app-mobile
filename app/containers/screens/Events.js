@@ -5,12 +5,12 @@ import {
   FlatList,
   Image,
   StyleSheet,
-  Text,
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
 import { fetchEvents } from '../../actions/events';
 import { EventsItem } from './EventsItem';
+import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
@@ -84,7 +84,7 @@ class Events extends Component {
   renderEventsList() {
     const { isStarted, isFetching, events } = this.props;
 
-    if (isStarted && isFetching) return <Text>Loading..</Text>;
+    if (isStarted && isFetching) return <RenderActivityIndicator />;
     return (
       <FlatList
         /* https://github.com/facebook/react-native/issues/13316 */

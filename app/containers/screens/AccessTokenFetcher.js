@@ -4,9 +4,8 @@ import { connect } from 'react-redux';
 import {
   View,
   StyleSheet,
-  Text,
 } from 'react-native';
-import I18n from '../../utils/translations';
+import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 
 // actions
 import authUser from '../../actions/auth';
@@ -45,9 +44,7 @@ class AccessTokenFetcher extends Component {
       <View
         style={styles.container}
       >
-        <Text>
-          {I18n.t('loading')}
-        </Text>
+        <RenderActivityIndicator />
       </View>
     );
   }
