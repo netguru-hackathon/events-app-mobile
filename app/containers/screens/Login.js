@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import {
   Dimensions,
   Image,
-  Linking,
-  Platform,
   StyleSheet,
   Text,
   TouchableHighlight,
@@ -38,13 +36,7 @@ const Login = props =>
     <Text>{I18n.t('welcome')}</Text>
     <TouchableHighlight
       underlayColor={colors.TRANSPARENT}
-      onPress={() => {
-        if (Platform.OS === 'android') {
-          Linking.openURL(authURL);
-        } else {
-          props.navigation.navigate('SlackAuth', { authURL });
-        }
-      }}
+      onPress={() => props.navigation.navigate('SlackAuth', { authURL })}
     >
       <Image
         source={signInWithSlack}

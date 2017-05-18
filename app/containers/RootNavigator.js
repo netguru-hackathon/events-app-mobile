@@ -23,10 +23,11 @@ const NotAuthenticatedNavigator = StackNavigator({
   Login: {
     screen: Login,
   },
-  SlackAuth: { screen: SlackAuth },
+  SlackAuth: {
+    screen: SlackAuth,
+  },
   AccessTokenFetcher: {
     screen: AccessTokenFetcher,
-    path: 'oauth',
   },
 }, {
   headerMode: 'none',
