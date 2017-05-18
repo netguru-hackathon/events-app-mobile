@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
+  AsyncStorage,
   Button,
   Image,
   StyleSheet,
@@ -48,6 +49,9 @@ class Settings extends Component {
 
   logout() {
     this.props.logoutUser();
+    AsyncStorage.multiRemove([
+      'reduxPersist:auth',
+    ]);
   }
 
   render() {
