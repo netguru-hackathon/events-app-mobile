@@ -6,16 +6,18 @@ import {
   Image,
   StyleSheet,
   Text,
+  ScrollView,
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
 import { fetchEvent } from '../../actions/events';
 import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 import colors from '../../constants/colors';
+import EventItems from './EventItems';
 
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
-  container: {
+  descriptionContainer: {
     padding: 10,
   },
   icon: {
@@ -23,7 +25,7 @@ const styles = StyleSheet.create({
     height: 20,
   },
   image: {
-    marginTop: -65,
+    marginTop: 0,
     width,
     height: 0.25 * height,
   },
@@ -60,7 +62,12 @@ class Event extends Component {
       headerTitle: `${navigation.state.params.item.name}`,
       headerTintColor: colors.WHITE,
       headerStyle: {
+        position: 'absolute',
         backgroundColor: colors.BLACK_OPACITY,
+        zIndex: 100,
+        top: 0,
+        left: 0,
+        right: 0,
       },
     };
   };
@@ -79,18 +86,26 @@ class Event extends Component {
     return (
       <View>
         <Image source={{ uri: event.image }} style={styles.image} />
-        <View style={styles.container}>
+        <View style={styles.descriptionContainer}>
           <Text>{event.description}</Text>
         </View>
       </View>
     );
   }
 
+  renderEventItems() {
+    const { isStarted, isFetching, event } = this.props;
+
+    if (isStarted && isFetching) return <RenderActivityIndicator />;
+    return <EventItems items={event.items} />;
+  }
+
   render() {
     return (
-      <View>
+      <ScrollView style={styles.container}>
         {this.renderEvent()}
-      </View>
+        {this.renderEventItems()}
+      </ScrollView>
     );
   }
 }

@@ -11,7 +11,9 @@
 	},
 	"dependencies": {
 		"axios": "^0.16.1",
+		"immutability-helper": "^2.2.2",
 		"jsonapi-serializer": "^3.5.3",
+		"moment": "^2.18.1",
 		"prop-types": "^15.5.8",
 		"react": "16.0.0-alpha.6",
 		"react-native": "^0.44.0",
