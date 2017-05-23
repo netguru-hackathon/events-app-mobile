@@ -12,6 +12,10 @@ I18n.translations = {
     settings: 'Settings',
     settingsTitle: 'Settings',
     welcome: 'Welcome',
+    eventItems: {
+      endTime: 'Starts at',
+      startTime: 'Ends at',
+    },
   },
   pl: {
     event: 'Wydarzenie',
@@ -22,6 +26,10 @@ I18n.translations = {
     settings: 'Ustawienia',
     settingsTitle: 'Ustawienia',
     welcome: 'Witaj',
+    eventItems: {
+      endTime: 'Zakończenie',
+      startTime: 'Rozpoczęcie',
+    },
   },
 };
 
