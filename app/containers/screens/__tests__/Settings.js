@@ -7,8 +7,12 @@ import store from '../../../store';
 test('renders correctly', () => {
   const tree = renderer.create(
     <Settings
+      user={{
+        name: 'name',
+        email: 'email',
+        avatarUrl: 'avatarUrl',
+      }}
       store={store}
-      token={'token'}
     />,
   ).toJSON();
   expect(tree).toMatchSnapshot();
