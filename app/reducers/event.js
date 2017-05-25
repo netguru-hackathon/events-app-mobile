@@ -11,7 +11,7 @@ export const initialState = {
   included: {},
 };
 
-export default function auth(state = initialState, action) {
+export default function event(state = initialState, action) {
   let item;
   switch (action.type) {
     case EVENT_FETCH_REQUEST:
