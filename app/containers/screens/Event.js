@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
+  Button,
   Dimensions,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
-  ScrollView,
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
@@ -17,6 +18,12 @@ import EventItems from './EventItems';
 
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
+  buttonWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    marginTop: 10,
+    marginLeft: 10,
+  },
   descriptionContainer: {
     padding: 10,
   },
@@ -80,12 +87,19 @@ class Event extends Component {
 
   // eslint-disable-next-line
   renderEvent() {
-    const { isStarted, isFetching, event } = this.props;
+    const { isStarted, isFetching, event, navigation } = this.props;
 
     if (isStarted && isFetching) return <RenderActivityIndicator />;
     return (
       <View>
         <Image source={{ uri: event.image }} style={styles.image} />
+        <View style={styles.buttonWrapper}>
+          <Button
+            onPress={() => navigation.navigate('EventParticipants')}
+            title={I18n.t('Event.participants')}
+            color={colors.BLUE}
+          />
+        </View>
         <View style={styles.descriptionContainer}>
           <Text>{event.description}</Text>
         </View>

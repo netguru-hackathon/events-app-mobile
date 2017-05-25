@@ -5,6 +5,9 @@ import {
   EVENT_FETCH_REQUEST,
   EVENT_FETCH_SUCCESS,
   EVENT_FETCH_FAILURE,
+  EVENT_PARTICIPANTS_FETCH_REQUEST,
+  EVENT_PARTICIPANTS_FETCH_SUCCESS,
+  EVENT_PARTICIPANTS_FETCH_FAILURE,
 } from '../constants/actionTypes';
 
 export function fetchEvents() {
@@ -32,6 +35,21 @@ export function fetchEvent(id) {
     payload: {
       request: {
         url: `/events/${id}`,
+      },
+    },
+  };
+}
+
+export function fetchEventParticipants(id) {
+  return {
+    types: [
+      EVENT_PARTICIPANTS_FETCH_REQUEST,
+      EVENT_PARTICIPANTS_FETCH_SUCCESS,
+      EVENT_PARTICIPANTS_FETCH_FAILURE,
+    ],
+    payload: {
+      request: {
+        url: `/events/${id}/users`,
       },
     },
   };
