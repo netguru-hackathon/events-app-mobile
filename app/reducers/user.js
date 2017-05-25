@@ -1,7 +1,7 @@
 import {
-  EVENT_FETCH_REQUEST,
-  EVENT_FETCH_SUCCESS,
-  EVENT_FETCH_FAILURE,
+  USER_FETCH_REQUEST,
+  USER_FETCH_SUCCESS,
+  USER_FETCH_FAILURE,
 } from '../constants/actionTypes';
 
 export const initialState = {
@@ -10,23 +10,23 @@ export const initialState = {
   item: {},
 };
 
-export default function event(state = initialState, action) {
+export default function user(state = initialState, action) {
   let item;
   switch (action.type) {
-    case EVENT_FETCH_REQUEST:
+    case USER_FETCH_REQUEST:
       return {
         ...state,
         isStarted: true,
         isFetching: true,
       };
-    case EVENT_FETCH_SUCCESS:
+    case USER_FETCH_SUCCESS:
       item = action.payload;
       return {
         ...state,
         isFetching: false,
         item,
       };
-    case EVENT_FETCH_FAILURE:
+    case USER_FETCH_FAILURE:
       return {
         ...initialState,
       };
