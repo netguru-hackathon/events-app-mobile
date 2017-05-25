@@ -85,7 +85,7 @@ class Settings extends Component {
         <Button
           onPress={this.logout.bind(this)}
           title={I18n.t('logout')}
-          color="#841584"
+          color={colors.BLUE}
         />
       </View>
     );

@@ -60,11 +60,11 @@ class EventItems extends Component {
             numberOfLines={2}
           >{item.description}</Text>
           <Text>
-            {`${I18n.t('eventItems.startTime')}: `}
+            {`${I18n.t('EventItems.startTime')}: `}
             {moment(new Date(item.startTime)).format('MMMM Do YYYY, HH:mm')}
           </Text>
           <Text>
-            {`${I18n.t('eventItems.endTime')}: `}
+            {`${I18n.t('EventItems.endTime')}: `}
             {moment(new Date(item.endTime)).format('MMMM Do YYYY, HH:mm')}
           </Text>
         </View>

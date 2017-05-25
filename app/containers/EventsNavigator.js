@@ -1,6 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 import Event from './screens/Event';
 import Events from './screens/Events';
+import EventParticipants from './screens/EventParticipants';
 
 const DashboardNavigator = StackNavigator({
   Events: {
@@ -8,6 +9,9 @@ const DashboardNavigator = StackNavigator({
   },
   Event: {
     screen: Event,
+  },
+  EventParticipants: {
+    screen: EventParticipants,
   },
 });
 
