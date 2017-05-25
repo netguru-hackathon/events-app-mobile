@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   Text,
+  TouchableHighlight,
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
@@ -45,6 +46,10 @@ class EventParticipants extends Component {
   static propTypes = {
     eventParticipants: PropTypes.arrayOf(PropTypes.object),
     fetchEventParticipants: PropTypes.func.isRequired,
+    navigation: PropTypes.shape({
+      state: PropTypes.object.isRequired,
+      navigate: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   static navigationOptions = {
@@ -69,14 +74,21 @@ class EventParticipants extends Component {
 
   // eslint-disable-next-line
   renderEvent({ item }) {
+    const { navigation } = this.props;
+
     return (
-      <View style={styles.row}>
-        <Image source={{ uri: item.avatarUrl }} style={styles.image} />
-        <View style={styles.descriptionContainer}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text>{item.email}</Text>
+      <TouchableHighlight
+        underlayColor={colors.TRANSPARENT}
+        onPress={() => navigation.navigate('User', { item })}
+      >
+        <View style={styles.row}>
+          <Image source={{ uri: item.avatarUrl }} style={styles.image} />
+          <View style={styles.descriptionContainer}>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text>{item.email}</Text>
+          </View>
         </View>
-      </View>
+      </TouchableHighlight>
     );
   }
 
