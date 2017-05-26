@@ -21,6 +21,7 @@ export const clientOptions = {
         const nextAction = {
           type: action.types[1],
           payload: data,
+          links: response.data.links,
           meta: {
             previousAction: action,
           },
