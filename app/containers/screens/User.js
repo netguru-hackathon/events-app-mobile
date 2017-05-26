@@ -37,9 +37,9 @@ class User extends Component {
     isStarted: PropTypes.bool.isRequired,
     isFetching: PropTypes.bool.isRequired,
     user: PropTypes.shape({
-      avatarUrl: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
+      avatarUrl: PropTypes.string,
+      email: PropTypes.string,
+      name: PropTypes.string,
     }),
     navigation: PropTypes.shape({
       state: PropTypes.object.isRequired,
@@ -78,7 +78,6 @@ class User extends Component {
     const { isStarted, isFetching, user } = this.props;
 
     if (isStarted && isFetching) return <RenderActivityIndicator />;
-
     return (
       <View style={styles.view}>
         <Image source={{ uri: user.avatarUrl }} style={styles.image} />

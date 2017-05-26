@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
 class Settings extends Component {
   static propTypes = {
     user: PropTypes.shape({
+      avatarUrl: PropTypes.string.isRequired,
       email: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      userUrl: PropTypes.string.isRequired,
     }),
     logoutUser: PropTypes.func.isRequired,
   };
