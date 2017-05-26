@@ -1,4 +1,4 @@
-import { unionWith, sortWith, ascend, prop, eqBy } from 'ramda';
+import { unionWith, prop, eqBy } from 'ramda';
 import {
   EVENTS_FETCH_REQUEST,
   EVENTS_FETCH_SUCCESS,
@@ -8,9 +8,6 @@ import {
 } from '../constants/actionTypes';
 
 const comparator = eqBy(prop('id'));
-const sortById = sortWith([
-  ascend(prop('id')),
-]);
 
 export const initialState = {
   isStarted: false,
@@ -36,11 +33,11 @@ export default function events(state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        items: sortById(unionWith(
+        items: unionWith(
           comparator,
-          items,
           state.items,
-        )),
+          items,
+        ),
         links,
       };
     case EVENTS_FETCH_FAILURE:
@@ -58,7 +55,7 @@ export default function events(state = initialState, action) {
       return {
         ...state,
         isRefreshing: false,
-        items: sortById(items),
+        items,
         links,
       };
     default:
