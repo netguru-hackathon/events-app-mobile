@@ -21,3 +21,8 @@ jest.mock('Linking', () => ({
 jest.mock('rn-ios-user-agent', () => ({
   set: jest.fn(),
 }));
+
+jest.mock('react-native-onesignal', () => ({
+  Onesignal: jest.fn(),
+  addEventListener: jest.fn(),
+}));

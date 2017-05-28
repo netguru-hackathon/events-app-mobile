@@ -3,6 +3,7 @@ package com.eventsapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.i18n.reactnativei18n.ReactNativeI18n;
 import com.smixx.fabric.FabricPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeOneSignalPackage(),
             new ReactNativeI18n(),
           new FabricPackage(),
           new ReactNativeConfigPackage()
