@@ -10,7 +10,13 @@ import {
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
-import { fetchEventParticipants } from '../../actions/events';
+import {
+  fetchEventParticipants,
+  fetchEventParticipantsNext,
+  refreshEventParticipants,
+  initializeEventParticipants,
+} from '../../actions/events';
+import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 import colors from '../../constants/colors';
 
 const styles = StyleSheet.create({
@@ -44,8 +50,14 @@ const styles = StyleSheet.create({
 
 class EventParticipants extends Component {
   static propTypes = {
-    eventParticipants: PropTypes.arrayOf(PropTypes.object),
     fetchEventParticipants: PropTypes.func.isRequired,
+    fetchEventParticipantsNext: PropTypes.func.isRequired,
+    refreshEventParticipants: PropTypes.func.isRequired,
+    initializeEventParticipants: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    isRefreshing: PropTypes.bool.isRequired,
+    eventParticipants: PropTypes.arrayOf(PropTypes.object),
+    next: PropTypes.string,
     navigation: PropTypes.shape({
       state: PropTypes.object.isRequired,
       navigate: PropTypes.func.isRequired,
@@ -69,6 +81,7 @@ class EventParticipants extends Component {
   };
 
   componentWillMount() {
+    this.props.initializeEventParticipants();
     this.props.fetchEventParticipants();
   }
 
@@ -92,6 +105,15 @@ class EventParticipants extends Component {
     );
   }
 
+  onLoadNextPage() {
+    if (!this.props.next) return;
+    this.props.fetchEventParticipantsNext();
+  }
+
+  onRefresh() {
+    this.props.refreshEventParticipants();
+  }
+
   // eslint-disable-next-line
   renderSeparator() {
     return (
@@ -100,8 +122,9 @@ class EventParticipants extends Component {
   }
 
   renderEventsList() {
-    const { eventParticipants } = this.props;
+    const { isFetching, isRefreshing, eventParticipants } = this.props;
 
+    if (isFetching && eventParticipants.length === 0) return <RenderActivityIndicator />;
     return (
       <FlatList
         /* https://github.com/facebook/react-native/issues/13316 */
@@ -111,6 +134,10 @@ class EventParticipants extends Component {
         ItemSeparatorComponent={this.renderSeparator}
         // eslint-disable-next-line
         renderItem={this.renderEvent.bind(this)}
+        onEndReached={this.onLoadNextPage.bind(this)}
+        onEndReachedThreshold={100}
+        onRefresh={this.onRefresh.bind(this)}
+        refreshing={isRefreshing}
       />
     );
   }
@@ -125,13 +152,17 @@ class EventParticipants extends Component {
 }
 
 const mapStateToProps = state => ({
-  isStarted: state.eventParticipants.isStarted,
-  isFetching: state.eventParticipants.isFetching,
+  isFetching: state.eventParticipants.isStarted,
+  isRefreshing: state.eventParticipants.isRefreshing,
   eventParticipants: state.eventParticipants.items,
+  next: state.eventParticipants.links.next,
 });
 
 const mapDispatchToProps = {
   fetchEventParticipants,
+  fetchEventParticipantsNext,
+  refreshEventParticipants,
+  initializeEventParticipants,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventParticipants);

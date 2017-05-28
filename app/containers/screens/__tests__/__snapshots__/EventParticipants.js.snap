@@ -8,33 +8,19 @@ exports[`renders correctly 1`] = `
     }
   }
 >
-  <RCTScrollView
-    ItemSeparatorComponent={[Function]}
-    data={Array []}
-    disableVirtualization={false}
-    getItem={[Function]}
-    getItemCount={[Function]}
-    horizontal={false}
-    initialNumToRender={10}
-    keyExtractor={[Function]}
-    maxToRenderPerBatch={10}
-    numColumns={1}
-    onContentSizeChange={[Function]}
-    onEndReached={[Function]}
-    onEndReachedThreshold={2}
-    onLayout={[Function]}
-    onScroll={[Function]}
-    onScrollBeginDrag={[Function]}
-    onViewableItemsChanged={undefined}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    renderScrollComponent={[Function]}
-    scrollEventThrottle={50}
-    stickyHeaderIndices={Array []}
-    updateCellsBatchingPeriod={50}
-    windowSize={21}
-  >
-    <View />
-  </RCTScrollView>
+  <ActivityIndicator
+    animating={true}
+    color="#999999"
+    hidesWhenStopped={true}
+    size="large"
+    style={
+      Object {
+        "alignItems": "center",
+        "height": 80,
+        "justifyContent": "center",
+        "padding": 8,
+      }
+    }
+  />
 </View>
 `;
