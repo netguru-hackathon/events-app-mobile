@@ -8,9 +8,13 @@ import {
   EVENT_FETCH_REQUEST,
   EVENT_FETCH_SUCCESS,
   EVENT_FETCH_FAILURE,
+  EVENT_PARTICIPANTS_INITIALIZE,
   EVENT_PARTICIPANTS_FETCH_REQUEST,
   EVENT_PARTICIPANTS_FETCH_SUCCESS,
   EVENT_PARTICIPANTS_FETCH_FAILURE,
+  EVENT_PARTICIPANTS_REFRESH_REQUEST,
+  EVENT_PARTICIPANTS_REFRESH_SUCCESS,
+  EVENT_PARTICIPANTS_REFRESH_FAILURE,
 } from '../constants/actionTypes';
 
 const defaultPer = 10;
@@ -87,6 +91,12 @@ export function fetchEvent(id) {
   };
 }
 
+export function initializeEventParticipants() {
+  return {
+    type: EVENT_PARTICIPANTS_INITIALIZE,
+  };
+}
+
 export function fetchEventParticipants(id) {
   return {
     types: [
@@ -99,5 +109,43 @@ export function fetchEventParticipants(id) {
         url: `/events/${id}/users`,
       },
     },
+  };
+}
+
+export function refreshEventParticipants() {
+  return {
+    types: [
+      EVENT_PARTICIPANTS_REFRESH_REQUEST,
+      EVENT_PARTICIPANTS_REFRESH_SUCCESS,
+      EVENT_PARTICIPANTS_REFRESH_FAILURE,
+    ],
+    payload: {
+      request: {
+        url: '/events',
+        params: {
+          'page[page]': 1,
+          'page[page-size]': defaultPer,
+        },
+      },
+    },
+  };
+}
+
+export function fetchEventParticipantsNext() {
+  return (dispatch, getState) => {
+    const { eventParticipants } = getState();
+    const url = eventParticipants.links.next;
+    return dispatch({
+      types: [
+        EVENT_PARTICIPANTS_FETCH_REQUEST,
+        EVENT_PARTICIPANTS_FETCH_SUCCESS,
+        EVENT_PARTICIPANTS_FETCH_FAILURE,
+      ],
+      payload: {
+        request: {
+          url,
+        },
+      },
+    });
   };
 }
