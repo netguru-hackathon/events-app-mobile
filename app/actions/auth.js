@@ -2,6 +2,7 @@ import {
   AUTH_USER_REQUEST,
   AUTH_USER_SUCCESS,
   AUTH_USER_FAILURE,
+  AUTH_SET_PLAYER_ID,
   LOGOUT_USER_SUCCESS,
 } from '../constants/actionTypes';
 
@@ -22,6 +23,13 @@ export function authUser(code) {
         simple: false,
       },
     },
+  };
+}
+
+export function setPlayerId(playerId) {
+  return {
+    type: AUTH_SET_PLAYER_ID,
+    playerId,
   };
 }
 
