@@ -98,7 +98,6 @@ workflows:
     before_run:
       - cache-pull
       - bootstrap-dotenv
-      - bootstrap-android-sdk
       - bootstrap-react-native
       - test-react-native
       - test-gradle
@@ -122,7 +121,6 @@ workflows:
     before_run:
       - cache-pull
       - bootstrap-dotenv
-      - bootstrap-android-sdk
       - bootstrap-react-native
       - test-react-native
       - test-gradle
@@ -144,7 +142,6 @@ workflows:
     before_run:
       - cache-pull
       - bootstrap-dotenv
-      - bootstrap-android-sdk
       - bootstrap-react-native
       - test-react-native
       - test-gradle
@@ -192,20 +189,7 @@ workflows:
                     output.write(line.sub(/\$[A-Z0-9_]+/) { |match| ENV[match.sub('$', '')] })
                   end
                 end
-  # Install additional Android packages.
 
-  bootstrap-android-sdk:
-    steps:
-      - script:
-          title: update-android-sdk
-          inputs:
-            - content: |-
-                set -ex
-                echo y | android update sdk --no-ui --all --filter build-tools-23.0.1 | grep 'package installed'
-                echo y | android update sdk --no-ui --all --filter platform-tools | grep 'package installed'
-                echo y | android update sdk --no-ui --all --filter extra-android-m2repository | grep 'package installed'
-                echo y | android update sdk --no-ui --all --filter extra-google-m2repository | grep 'package installed'
-                echo y | android update sdk --no-ui --all --filter extra-google-google_play_services | grep 'package installed'
   # Bootstrap React Native dependencies using NVM and Yarn package managers.
 
   bootstrap-react-native:
