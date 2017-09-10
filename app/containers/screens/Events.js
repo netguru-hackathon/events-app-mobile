@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components/native';
 import {
   FlatList,
   Image,
@@ -8,28 +9,32 @@ import {
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
+import { EventsItem } from './EventsItem';
+import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
+import colors from '../../constants/colors';
+
+// actions
 import {
   fetchEvents,
   fetchEventsNext,
   refreshEvents,
 } from '../../actions/events';
-import { EventsItem } from './EventsItem';
-import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
-import colors from '../../constants/colors';
+
+const Container = styled.View`
+  margin-top: 5;
+`;
+
+const Separator = styled.View`
+  height: 5;
+  margin-left: 15;
+  margin-right: 15;
+  background-color: ${colors.TRANSPARENT};
+`;
 
 const styles = StyleSheet.create({
   icon: {
     width: 20,
     height: 20,
-  },
-  separator: {
-    height: 5,
-    marginLeft: 15,
-    marginRight: 15,
-    backgroundColor: colors.TRANSPARENT,
-  },
-  view: {
-    marginTop: 5,
   },
 });
 
@@ -68,34 +73,22 @@ class Events extends Component {
     this.props.fetchEvents();
   }
 
-  onLoadNextPage() {
+  onLoadNextPage = () => {
     if (!this.props.next) return;
     this.props.fetchEventsNext();
   }
 
-  onRefresh() {
-    this.props.refreshEvents();
-  }
+  onRefresh = () => this.props.refreshEvents();
 
-  // eslint-disable-next-line
-  renderEvent({ item }) {
-    const { navigation } = this.props;
+  renderEvent = ({ item }) => (
+    <EventsItem
+      key={`event${item.id}`}
+      event={item}
+      onPress={() => this.props.navigation.navigate('Event', { item })}
+    />
+  )
 
-    return (
-      <EventsItem
-        key={`event${item.id}`}
-        event={item}
-        onPress={() => navigation.navigate('Event', { item })}
-      />
-    );
-  }
-
-  // eslint-disable-next-line
-  renderSeparator() {
-    return (
-      <View style={styles.separator} />
-    );
-  }
+  renderSeparator = () => <Separator />;
 
   renderEventsList() {
     const { isFetching, isRefreshing, events } = this.props;
@@ -108,11 +101,10 @@ class Events extends Component {
         data={events}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={this.renderSeparator}
-        // eslint-disable-next-line
-        renderItem={this.renderEvent.bind(this)}
-        onEndReached={this.onLoadNextPage.bind(this)}
+        renderItem={this.renderEvent}
+        onEndReached={this.onLoadNextPage}
         onEndReachedThreshold={100}
-        onRefresh={this.onRefresh.bind(this)}
+        onRefresh={this.onRefresh}
         refreshing={isRefreshing}
       />
     );
@@ -120,9 +112,9 @@ class Events extends Component {
 
   render() {
     return (
-      <View style={styles.view}>
+      <Container>
         {this.renderEventsList()}
-      </View>
+      </Container>
     );
   }
 }

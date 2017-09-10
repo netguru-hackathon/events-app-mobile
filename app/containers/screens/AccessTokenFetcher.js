@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/native';
 import { connect } from 'react-redux';
-import {
-  View,
-  StyleSheet,
-} from 'react-native';
+import { View } from 'react-native';
 import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 
 // actions
 import { authUser } from '../../actions/auth';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+const Container = styled.View`
+  flex: 1,
+  justify-content: 'center',
+  align-items: 'center',
+`;
 
 class AccessTokenFetcher extends Component {
   static propTypes = {
@@ -41,11 +37,9 @@ class AccessTokenFetcher extends Component {
 
   render() {
     return (
-      <View
-        style={styles.container}
-      >
+      <Container>
         <RenderActivityIndicator />
-      </View>
+      </Container>
     );
   }
 }

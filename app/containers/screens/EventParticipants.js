@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components/native';
 import {
   FlatList,
   Image,
@@ -10,41 +11,48 @@ import {
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
+import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
+import colors from '../../constants/colors';
+
+// actions
 import {
   fetchEventParticipants,
   fetchEventParticipantsNext,
   refreshEventParticipants,
   initializeEventParticipants,
 } from '../../actions/events';
-import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
-import colors from '../../constants/colors';
+
+const Container = styled.View`
+  margin-top: 5px;
+`;
+
+const EventParticipantContainer = styled.View`
+  flex-direction: row;
+  align-items: center;
+  background-color: ${colors.WHITE};
+`;
+
+const EventParticipantAvatar = styled.Image`
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+`;
+
+const EventParticipantName = styled.Text`
+  font-weight: bold;
+`;
+
+const Separator = styled.View`
+  height: 5px;
+  margin-right: 15px;
+  margin-left: 15px;
+  background-color: ${colors.TRANSPARENT};
+`;
 
 const styles = StyleSheet.create({
   icon: {
     width: 20,
     height: 20,
-  },
-  image: {
-    width: 40,
-    height: 40,
-    margin: 5,
-  },
-  name: {
-    fontWeight: 'bold',
-  },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colors.WHITE,
-  },
-  separator: {
-    height: 5,
-    marginRight: 15,
-    marginLeft: 15,
-    backgroundColor: colors.TRANSPARENT,
-  },
-  view: {
-    marginTop: 5,
   },
 });
 
@@ -85,41 +93,33 @@ class EventParticipants extends Component {
     this.props.fetchEventParticipants();
   }
 
-  // eslint-disable-next-line
-  renderEvent({ item }) {
-    const { navigation } = this.props;
+  onRefresh = () => this.props.refreshEventParticipants();
 
-    return (
-      <TouchableHighlight
-        underlayColor={colors.TRANSPARENT}
-        onPress={() => navigation.navigate('User', { item })}
-      >
-        <View style={styles.row}>
-          <Image source={{ uri: item.avatarUrl }} style={styles.image} />
-          <View style={styles.descriptionContainer}>
-            <Text style={styles.name}>{item.name}</Text>
-            <Text>{item.email}</Text>
-          </View>
-        </View>
-      </TouchableHighlight>
-    );
-  }
-
-  onLoadNextPage() {
+  onLoadNextPage = () => {
     if (!this.props.next) return;
     this.props.fetchEventParticipantsNext();
   }
 
-  onRefresh() {
-    this.props.refreshEventParticipants();
-  }
+  renderEvent = ({ item }) => (
+    <TouchableHighlight
+      underlayColor={colors.TRANSPARENT}
+      onPress={() => this.props.navigation.navigate('User', { item })}
+    >
+      <EventParticipantContainer>
+        <EventParticipantAvatar source={{ uri: item.avatarUrl }} />
+        <View>
+          <EventParticipantName>
+            {item.name}
+          </EventParticipantName>
+          <Text>
+            {item.email}
+          </Text>
+        </View>
+      </EventParticipantContainer>
+    </TouchableHighlight>
+  )
 
-  // eslint-disable-next-line
-  renderSeparator() {
-    return (
-      <View style={styles.separator} />
-    );
-  }
+  renderSeparator = () => <Separator />;
 
   renderEventsList() {
     const { isFetching, isRefreshing, eventParticipants } = this.props;
@@ -132,11 +132,10 @@ class EventParticipants extends Component {
         data={eventParticipants}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={this.renderSeparator}
-        // eslint-disable-next-line
-        renderItem={this.renderEvent.bind(this)}
-        onEndReached={this.onLoadNextPage.bind(this)}
+        renderItem={this.renderEvent}
+        onEndReached={this.onLoadNextPage}
         onEndReachedThreshold={100}
-        onRefresh={this.onRefresh.bind(this)}
+        onRefresh={this.onRefresh}
         refreshing={isRefreshing}
       />
     );
@@ -144,9 +143,9 @@ class EventParticipants extends Component {
 
   render() {
     return (
-      <View style={styles.view}>
+      <Container>
         {this.renderEventsList()}
-      </View>
+      </Container>
     );
   }
 }

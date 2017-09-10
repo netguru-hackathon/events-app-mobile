@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components/native';
 import {
   Button,
   Dimensions,
@@ -11,30 +12,39 @@ import {
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
-import { fetchEvent } from '../../actions/events';
 import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 import colors from '../../constants/colors';
 import EventItems from './EventItems';
 
+// actions
+import { fetchEvent } from '../../actions/events';
+
 const { width, height } = Dimensions.get('window');
+
+const ButtonWrapper = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 10;
+  margin-left: 10;
+`;
+
+const DescriptionContainer = styled.View`
+  padding-top: 10;
+  padding-bottom: 10;
+  padding-right: 10;
+  padding-left: 10;
+`;
+
+const EventImage = styled.Image`
+  margin-top: 0;
+  width: ${width};
+  height: ${0.25 * height};
+`;
+
 const styles = StyleSheet.create({
-  buttonWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    marginTop: 10,
-    marginLeft: 10,
-  },
-  descriptionContainer: {
-    padding: 10,
-  },
   icon: {
     width: 20,
     height: 20,
-  },
-  image: {
-    marginTop: 0,
-    width,
-    height: 0.25 * height,
   },
 });
 
@@ -92,17 +102,17 @@ class Event extends Component {
     if (isStarted && isFetching) return <RenderActivityIndicator />;
     return (
       <View>
-        <Image source={{ uri: event.image }} style={styles.image} />
-        <View style={styles.buttonWrapper}>
+        <EventImage source={{ uri: event.image }} />
+        <ButtonWrapper>
           <Button
             onPress={() => navigation.navigate('EventParticipants')}
             title={I18n.t('Event.participants')}
             color={colors.BLUE}
           />
-        </View>
-        <View style={styles.descriptionContainer}>
+        </ButtonWrapper>
+        <DescriptionContainer>
           <Text>{event.description}</Text>
-        </View>
+        </DescriptionContainer>
       </View>
     );
   }
@@ -116,7 +126,7 @@ class Event extends Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView>
         {this.renderEvent()}
         {this.renderEventItems()}
       </ScrollView>
