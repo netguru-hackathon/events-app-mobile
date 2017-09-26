@@ -23,7 +23,7 @@ exports[`renders correctly 1`] = `
     onLoadingStart={[Function]}
     onMessage={[Function]}
     onShouldStartLoadWithRequest={[Function]}
-    scalesPageToFit={undefined}
+    scalesPageToFit={true}
     scrollEnabled={undefined}
     source={
       Object {

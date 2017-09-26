@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/native';
 import {
   Dimensions,
   Image,
-  StyleSheet,
   Text,
   TouchableHighlight,
   View,
@@ -16,35 +16,32 @@ import signInWithSlack from '../../img/SignInWithSlack.png';
 import I18n from '../../utils/translations';
 
 const { width } = Dimensions.get('window');
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    width: 0.7 * width,
-  },
-});
+
+const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+const LoginButton = styled.Image`
+  width: ${0.7 * width};
+`;
 
 const authURL = `${SlackOAuthUrl}?client_id=${Config.SLACK_CLIENT_ID}&scope=${permissionScopes()}`;
 
 const Login = props =>
-  <View
-    style={styles.container}
-  >
+  <Container>
     <Text>{I18n.t('welcome')}</Text>
     <TouchableHighlight
       underlayColor={colors.TRANSPARENT}
       onPress={() => props.navigation.navigate('SlackAuth', { authURL })}
     >
-      <Image
+      <LoginButton
         source={signInWithSlack}
-        style={styles.button}
         resizeMode={'contain'}
       />
     </TouchableHighlight>
-  </View>;
+  </Container>;
 
 Login.propTypes = {
   navigation: PropTypes.shape({

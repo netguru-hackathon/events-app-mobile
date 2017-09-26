@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components/native';
 import {
   Image,
   StyleSheet,
@@ -8,26 +9,36 @@ import {
   View,
 } from 'react-native';
 import I18n from '../../utils/translations';
-import { fetchUser } from '../../actions/users';
 import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 import colors from '../../constants/colors';
 
+// actions
+import { fetchUser } from '../../actions/users';
+
+const Container = styled.View`
+  margin: 10px;
+  align-items: center;
+`;
+
+const UserAvatar = styled.Image`
+  width: 120px;
+  height: 120px;
+  margin: 5px;
+`;
+
+const UserName = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const UserEmail = styled.Text`
+  margin-bottom: 10px;
+`;
+
 const styles = StyleSheet.create({
-  email: {
-    marginBottom: 10,
-  },
   icon: {
     width: 20,
     height: 20,
-  },
-  image: {
-    width: 120,
-    height: 120,
-    margin: 5,
-  },
-  view: {
-    margin: 10,
-    alignItems: 'center',
   },
 });
 
@@ -68,29 +79,27 @@ class User extends Component {
   };
 
   componentWillMount() {
-    const { navigation } = this.props;
-
-    this.props.fetchUser(navigation.state.params.item.id);
+    this.props.fetchUser(this.props.navigation.state.params.item.id);
   }
 
-  // eslint-disable-next-line
-  renderUser() {
+  renderUser = () => {
     const { isStarted, isFetching, user } = this.props;
 
     if (isStarted && isFetching) return <RenderActivityIndicator />;
     return (
-      <View style={styles.view}>
-        <Image source={{ uri: user.avatarUrl }} style={styles.image} />
-        <Text style={styles.email}>{user.email}</Text>
+      <View>
+        <UserAvatar source={{ uri: user.avatarUrl }} />
+        <UserName>{user.name}</UserName>
+        <UserEmail>{user.email}</UserEmail>
       </View>
     );
   }
 
   render() {
     return (
-      <View style={styles.view}>
+      <Container>
         {this.renderUser()}
-      </View>
+      </Container>
     );
   }
 }

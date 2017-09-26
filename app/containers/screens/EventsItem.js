@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/native';
 import {
   Dimensions,
   Image,
@@ -11,48 +12,53 @@ import {
 import colors from '../../constants/colors';
 
 const { width } = Dimensions.get('window');
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-  },
-  description: {
-    fontSize: 14,
-    width: width - 90,
-  },
-  image: {
-    margin: 5,
-    width: 70,
-    height: 70,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  row: {
-    backgroundColor: colors.WHITE,
-  },
-});
+
+const Container = styled.View`
+  flex-direction: row;
+`;
+
+const EventLink = styled.TouchableHighlight`
+  background-color: ${colors.WHITE};
+`;
+
+const EventImage = styled.Image`
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+`;
+
+const EventContent = styled.View`
+  width: ${width - 70};
+`;
+
+const EventName = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const EventDescription = styled.Text`
+  font-size: 14px;
+  width: ${width - 90};
+`;
 
 export const EventsItem = ({ event, onPress }) =>
-  <TouchableHighlight
-    style={styles.row}
+  <EventLink
     underlayColor={colors.TRANSPARENT}
     onPress={onPress}
   >
-    <View style={styles.container}>
-      <Image source={{ uri: event.image }} style={styles.image} />
+    <Container>
+      <EventImage source={{ uri: event.image }} />
       <View>
-        <Text style={styles.name}>{event.name}</Text>
-        <Text
-          style={styles.description}
+        <EventName>{event.name}</EventName>
+        <EventDescription
           ellipsizeMode={'tail'}
           numberOfLines={3}
         >
           {event.description}
-        </Text>
+        </EventDescription>
       </View>
-    </View>
-  </TouchableHighlight>;
+    </Container>
+  </EventLink>;
 
 EventsItem.propTypes = {
   event: PropTypes.shape({

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components/native';
 import {
   AsyncStorage,
   Button,
@@ -16,26 +17,30 @@ import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 // actions
 import { logoutUser } from '../../actions/auth';
 
+const Container = styled.View`
+  margin: 10px;
+  align-items: center;
+`;
+
+const UserAvatar = styled.Image`
+  width: 120px;
+  height: 120px;
+  margin: 5px;
+`;
+
+const UserName = styled.Text`
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+const UserEmail = styled.Text`
+  margin-bottom: 10px;
+`;
+
 const styles = StyleSheet.create({
-  email: {
-    marginBottom: 10,
-  },
   icon: {
     width: 20,
     height: 20,
-  },
-  image: {
-    width: 120,
-    height: 120,
-    margin: 5,
-  },
-  name: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  view: {
-    margin: 10,
-    alignItems: 'center',
   },
 });
 
@@ -78,16 +83,16 @@ class Settings extends Component {
     if (!user) return <RenderActivityIndicator />;
 
     return (
-      <View style={styles.view}>
-        <Image source={{ uri: user.avatarUrl }} style={styles.image} />
-        <Text style={styles.name}>{user.name}</Text>
-        <Text style={styles.email}>{user.email}</Text>
+      <Container>
+        <UserAvatar source={{ uri: user.avatarUrl }} />
+        <UserName>{user.name}</UserName>
+        <UserEmail>{user.email}</UserEmail>
         <Button
           onPress={this.logout.bind(this)}
           title={I18n.t('logout')}
           color={colors.BLUE}
         />
-      </View>
+      </Container>
     );
   }
 }

@@ -23,7 +23,7 @@ module.exports = {
     'react-native/no-inline-styles': 2,
     'react-native/no-color-literals': 2,
     'import/prefer-default-export': 0,
-    'no-unused-vars': [2, { 'argsIgnorePattern': '^_' }],
+    'no-unused-vars': [0, { 'argsIgnorePattern': '^_' }],
     'max-len': [2, 100],
     'global-require': 0,
     'no-multiple-empty-lines': ['error', {

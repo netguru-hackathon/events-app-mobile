@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import moment from 'moment';
 import PropTypes from 'prop-types';
+import styled from 'styled-components/native';
+import moment from 'moment';
 import {
   Dimensions,
   FlatList,
@@ -13,73 +14,70 @@ import I18n from '../../utils/translations';
 import colors from '../../constants/colors';
 
 const { width } = Dimensions.get('window');
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    padding: 5,
-    backgroundColor: colors.WHITE,
-  },
-  content: {
-    width: width - 60,
-  },
-  description: {
-    fontSize: 14,
-  },
-  image: {
-    width: 50,
-    height: 50,
-    margin: 5,
-  },
-  name: {
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  separator: {
-    height: 5,
-    marginRight: 15,
-    marginLeft: 15,
-    backgroundColor: colors.TRANSPARENT,
-  },
-});
+
+const Container = styled.View`
+  flex-direction: row;
+  padding: 5px;
+  background-color: ${colors.WHITE};
+`;
+
+const EventImage = styled.Image`
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+`;
+
+const EventContent = styled.View`
+  width: ${width - 70};
+`;
+
+const EventName = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
+`;
+
+const EventDescription = styled.Text`
+  font-size: 14px;
+`;
+
+const Separator = styled.View`
+  height: 5px;
+  margin-right: 15px;
+  margin-left: 15px;
+  background-color: ${colors.TRANSPARENT};
+`;
 
 class EventItems extends Component {
   static propTypes = {
     items: PropTypes.arrayOf(PropTypes.object),
   };
 
-  // eslint-disable-next-line
-  renderEventItem({ item }) {
-    return (
-      <View style={styles.container}>
-        <Image source={{ uri: item.image }} style={styles.image} />
-        <View style={styles.content}>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text
-            style={styles.description}
-            ellipsizeMode={'tail'}
-            numberOfLines={2}
-          >{item.description}</Text>
-          <Text>
-            {`${I18n.t('EventItems.startTime')}: `}
-            {moment(new Date(item.startTime)).format('MMMM Do YYYY, HH:mm')}
-          </Text>
-          <Text>
-            {`${I18n.t('EventItems.endTime')}: `}
-            {moment(new Date(item.endTime)).format('MMMM Do YYYY, HH:mm')}
-          </Text>
-        </View>
-      </View>
-    );
-  }
+  renderEventItem = ({ item }) => (
+    <Container>
+      <EventImage source={{ uri: item.image }} />
+      <EventContent>
+        <EventName>{item.name}</EventName>
+        <EventDescription
+          ellipsizeMode="tail"
+          numberOfLines={2}
+        >
+          {item.description}
+        </EventDescription>
+        <Text>
+          {`${I18n.t('EventItems.startTime')}: `}
+          {moment(new Date(item.startTime)).format('MMMM Do YYYY, HH:mm')}
+        </Text>
+        <Text>
+          {`${I18n.t('EventItems.endTime')}: `}
+          {moment(new Date(item.endTime)).format('MMMM Do YYYY, HH:mm')}
+        </Text>
+      </EventContent>
+    </Container>
+  )
 
-  // eslint-disable-next-line
-  renderSeparator() {
-    return (
-      <View style={styles.separator} />
-    );
-  }
+  renderSeparator = () => <Separator />;
 
-  renderEventItems() {
+  render() {
     const { items } = this.props;
 
     return (
@@ -89,14 +87,9 @@ class EventItems extends Component {
         data={items}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={this.renderSeparator}
-        // eslint-disable-next-line
-        renderItem={this.renderEventItem.bind(this)}
+        renderItem={this.renderEventItem}
       />
     );
-  }
-
-  render() {
-    return this.renderEventItems();
   }
 }
 
