@@ -1,5 +1,4 @@
 import { Dimensions } from 'react-native';
-import { responsiveWidth, responsiveHeight } from 'react-native-responsive-dimensions';
 
 const { width } = Dimensions.get('window');
 
@@ -23,8 +22,4 @@ const normalizedFontSize = (basicFontSize) => {
   return basicFontSize;
 };
 
-const normalizedWidth = responsiveWidth;
-
-const normalizedHeight = responsiveHeight;
-
-export { normalizedFontSize, normalizedWidth, normalizedHeight };
+export { normalizedFontSize };

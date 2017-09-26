@@ -9,9 +9,9 @@ import { RenderActivityIndicator } from '../shared/RenderActivityIndicator';
 import { authUser } from '../../actions/auth';
 
 const Container = styled.View`
-  flex: 1,
-  justify-content: 'center',
-  align-items: 'center',
+  flex: 1;
+  justify-content: center;
+  align-items: center;
 `;
 
 class AccessTokenFetcher extends Component {

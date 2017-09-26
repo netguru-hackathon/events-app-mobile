@@ -3,9 +3,12 @@
 exports[`renders correctly 1`] = `
 <View
   style={
-    Object {
-      "marginTop": 5,
-    }
+    Array [
+      Object {
+        "marginTop": 5,
+      },
+      undefined,
+    ]
   }
 >
   <ActivityIndicator
